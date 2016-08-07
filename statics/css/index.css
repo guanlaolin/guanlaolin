@@ -1,0 +1,34 @@
+body{
+  background-color: #F2F2F2;
+}
+
+.reserved{
+  height: 200px;
+}
+
+.main{
+}
+
+.main_span{
+  display: block;
+  background-color: #DFDFDF;
+  border-radius: 8px; //圆角
+  text-align: center;
+  width: 300px;
+  margin: 0 auto; //水平居中
+  padding: 5px;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+.main_a{
+  font-size: 50px;
+  color: #7F7F7F;
+}
+
+.main_a:hover{
+  color: #000000;
+}
