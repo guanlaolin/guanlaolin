@@ -9,9 +9,13 @@ import (
 
 //判断文件是否存在，如果文件存在返回true
 func IsExitFile(file string) bool {
-	_, err := os.Open(file)
+	f, err := os.Open(file)
+
+	defer f.Close()
+
 	if os.IsNotExist(err) {
 		return false
 	}
+
 	return true
 }

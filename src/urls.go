@@ -11,4 +11,6 @@ import (
 var main_urls = map[string]func(w http.ResponseWriter, r *http.Request){}
 
 //pan.guanlaolin.cn路由映射
-var pan_urls = map[string]func(w http.ResponseWriter, r *http.Request){}
+var pan_urls = map[string]func(w http.ResponseWriter, r *http.Request){
+	"/":PanIndexHandler;
+}
