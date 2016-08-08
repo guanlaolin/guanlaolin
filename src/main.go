@@ -8,7 +8,10 @@ import (
 )
 
 func init() {
-	//读取配置文件
+	//配置配置文件
+	if !IsExitFile("config.json") {
+		log.Fatal("未发现配置文件config.json")
+	}
 }
 
 func main() {
