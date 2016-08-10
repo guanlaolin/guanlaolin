@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>文件列表</title>
     <link rel="stylesheet" href="css/list.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="js/list.js"></script>
   </head>
   <body>
       <div class="top">
@@ -17,6 +18,7 @@
           <input type="text" name="context" value="">
           <input type="button" name="search" value="查找">
         </form>
+        <button type="button" name="button" onclick="showFileDiag()">上传文件</button>
       </div>
 
       </div>
@@ -28,6 +30,14 @@
       </div>
       <div class="right">
 
+      </div>
+
+      <!-- 文件选择对话框 -->
+      <div class="file" id = "file">
+        <form class="" action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" name="data" value="选择文件">
+          <input type="submit" name="name" value="上传">
+        </form>
       </div>
   </body>
 </html>

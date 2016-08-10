@@ -7,25 +7,30 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 
 	"github.com/gorilla/mux"
 )
 
 const (
 	PORT = "port"
+
+	EXT_HTML = ".html"
 )
 
 const (
 	CONFIG_FILE = "../config.json" //配置文件路径
 
-	HTML_DIR = "../statics/" //html路径
+	HTML_DIR = "../statics/"     //html路径
+	CSS_DIR  = HTML_DIR + "css/" //css路径
 )
 
 var (
-	configs   map[string]string             //保存配置文件
-	templates map[string]*template.Template //保存静态模板
+	configs   = make(map[string]string)             //保存配置文件
+	templates = make(map[string]*template.Template) //保存静态模板
 )
 
+//系统初始化
 func init() {
 	//配置配置文件
 	if !IsExitFile(CONFIG_FILE) {
@@ -46,8 +51,22 @@ func init() {
 
 	//加载静态模板，缓存到内存以加快访问速度
 	files, err := ioutil.ReadDir(HTML_DIR)
-	if err
-	template.ParseFiles()
+	if err != nil {
+		log.Print("读取模板目录失败：", err)
+	}
+
+	for _, file := range files {
+		if path.Ext(file.Name()) != EXT_HTML {
+			continue
+		}
+		tmpl, err := template.ParseFiles(HTML_DIR + file.Name())
+		if err != nil {
+			log.Print("解析模板：", file.Name(), "失败：", err)
+		}
+
+		templates[file.Name()] = tmpl
+	}
+	//log.Print(templates)
 }
 
 func main() {
@@ -64,6 +83,8 @@ func main() {
 	for url, handler := range pan_urls {
 		pan.HandleFunc(url, handler)
 	}
+
+	//静态文件处理
 
 	if err := http.ListenAndServe(configs[PORT], r); err != nil {
 		log.Fatal("Listening ", configs[PORT], " error:", err)

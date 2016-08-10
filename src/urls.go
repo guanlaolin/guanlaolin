@@ -8,9 +8,12 @@ import (
 )
 
 //guanlaolin.cn路由映射
-var main_urls = map[string]func(w http.ResponseWriter, r *http.Request){}
+var main_urls = map[string]func(w http.ResponseWriter, r *http.Request){
+	"/": IndexHandler,
+}
 
 //pan.guanlaolin.cn路由映射
 var pan_urls = map[string]func(w http.ResponseWriter, r *http.Request){
-	"/":PanIndexHandler;
+	"/":       PanIndexHandler,
+	"/upload": PanUploadHandler,
 }
