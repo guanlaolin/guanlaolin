@@ -14,6 +14,8 @@ var main_urls = map[string]func(w http.ResponseWriter, r *http.Request){
 
 //pan.guanlaolin.cn路由映射
 var pan_urls = map[string]func(w http.ResponseWriter, r *http.Request){
-	"/":       PanIndexHandler,
-	"/upload": PanUploadHandler,
+	"/":         PanIndexHandler,
+	"/upload":   PanUploadHandler,
+	"/list":     PanListHandler,
+	"/download": PanDownloadHandler,
 }

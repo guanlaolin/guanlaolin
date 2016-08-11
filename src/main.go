@@ -23,6 +23,7 @@ const (
 
 	HTML_DIR = "../statics/"     //html路径
 	CSS_DIR  = HTML_DIR + "css/" //css路径
+	JS_DIR   = HTML_DIR + "js/"  //js路径
 )
 
 var (
@@ -70,7 +71,20 @@ func init() {
 }
 
 func main() {
+
 	r := mux.NewRouter()
+
+	//静态文件处理
+	http.Handle("/css/",
+		http.StripPrefix("/css/",
+			http.FileServer(http.Dir(CSS_DIR))))
+	http.Handle("/js/",
+		http.StripPrefix("/js/",
+			http.FileServer(http.Dir(JS_DIR))))
+	//用handler代替
+	//	http.Handle("/publics/",
+	//		http.StripPrefix("/publics/",
+	//			http.FileServer(http.Dir(UPLOAD_DIR))))
 
 	//guanlaolin.cn
 	main := r.Host("www.guanlaolin.cn").Subrouter()
@@ -84,9 +98,9 @@ func main() {
 		pan.HandleFunc(url, handler)
 	}
 
-	//静态文件处理
+	http.Handle("/", r)
 
-	if err := http.ListenAndServe(configs[PORT], r); err != nil {
+	if err := http.ListenAndServe(configs[PORT], nil); err != nil {
 		log.Fatal("Listening ", configs[PORT], " error:", err)
 	}
 }

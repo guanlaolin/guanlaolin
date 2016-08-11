@@ -7,37 +7,60 @@
     <script type="text/javascript" src="js/list.js"></script>
   </head>
   <body>
+    <div class="all">
+      <!-- <div class="logo">
+
+      </div> -->
       <div class="top">
 
         <p class="notice">
           请注意：由于服务器存储空间有限，仅保存7天之内的文件，超过七天系统自动删除！
         </p>
 
+
+      <input type="button" name="button" onclick="showFileDiag()" class="upload" value="上传文件"></button>
       <div class="search">
-        <form class="" action="/list" method="get">
-          <input type="text" name="context" value="">
-          <input type="button" name="search" value="查找">
-        </form>
-        <button type="button" name="button" onclick="showFileDiag()">上传文件</button>
+          <input type="text" name="context" value="" class="text">
+          <input type="button" name="search" value="查找文件">
       </div>
 
+      <!-- top -->
       </div>
 
       <hr>
 
-      <div class="left">
+      <!-- <div class="left">
 
-      </div>
+        <!-- left -->
+      <!-- </div>  -->
+
       <div class="right">
-
+          <table class="info" id = "info">
+            <tr>
+              <td>
+                文件名
+              </td>
+              <td>
+                上传时间
+              </td>
+              <td>
+                操作
+              </td>
+            </tr>
+          </table>
+        <!-- right -->
       </div>
 
       <!-- 文件选择对话框 -->
       <div class="file" id = "file">
         <form class="" action="/upload" method="post" enctype="multipart/form-data">
-          <input type="file" name="data" value="选择文件">
+          <input type="file" name="data" value="选择文件" class="select"><br><br>
           <input type="submit" name="name" value="上传">
+          <input type="button" name="name" value="取消" onclick="hiddenFileDiag()">
         </form>
       </div>
+
+      <!-- all -->
+    </div>
   </body>
 </html>

@@ -1,4 +1,17 @@
+.all{
+  width: 960px;
+  margin: 0 auto;
+}
+
 hr{
+}
+
+a{
+  text-decoration: none;
+}
+
+.logo{
+  width: 180px;
 }
 
 .top{
@@ -17,13 +30,47 @@ hr{
   border: solid 2px;
 }
 
+.right{
+  text-align: center;
+}
+
 .search{
+  margin-right: 20px;
+  margin-top: 20px;
+  float: right;
+}
+
+.top .upload{
+    float: right;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.search .text{
+  width: 200px;
 }
 
 .file{
-  color: #000000;
+  padding-top: 70px;
+  position: fixed;
+  top: 100px;
+
+  background-color: #D0D0D0;
   width: 400px;
   height: 200px;
-  /*margin: 0 auto;*/
   visibility: hidden;
+
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.info{
+  width: 100%;
+  margin: 0 auto;
+}
+
+.info td{
+  border: solid 1px;
 }
